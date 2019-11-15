@@ -1,0 +1,88 @@
+ video{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width:100%;
+    min-width: 100%; 
+    min-height: 100%;
+  }
+  .login_box{
+    width:20%;
+    position:absolute;
+    left:33%;
+    top:25%;
+    background-color:rgba(199, 236, 238,0.7) !important;
+    border-radius:20px !important;
+    padding:50px;
+    text-align: center ;
+  }
+  .btn{
+      width:80%
+  }
+  .logo_name{
+    font-family: 'Pacifico', cursive !important;
+    font-size:40px !important;
+    color:#dff9fb !important;
+  }
+  .logo_name_menu{
+    font-family: 'Pacifico', cursive !important;
+    font-size:20px !important;
+    color:#dff9fb !important;
+    padding-left:30px;
+  }
+  .error{
+      display:flex;
+      justify-content: center;
+      align-content: center;
+      background-color: rgba(255,255,255,0.5) !important;
+  }
+  @media (max-width:1340px){
+        .login_box{
+            width:25%;
+        }
+  }
+  @media (max-width:1072px){
+      .login_box{
+          width:30%;
+      }
+  }
+  @media (max-width:890px){
+    .login_box{
+        width:35%;
+    }
+  }
+  @media (max-width:768px){
+    .login_box{
+        width:40%;
+    }
+  }
+  @media (max-width:668px){
+    .login_box{
+        width:45%;
+        left:20%;
+    }
+  }
+  @media (max-width:600px){
+    .login_box{
+        width:50%;
+        left:20%;
+    }
+  }
+  @media (max-width:440px){
+    .login_box{
+        width:55%;
+        left:10%;
+    }
+  }
+  @media (min-aspect-ratio:16/9){
+    video{
+        width:100%;
+        height:auto;
+    }
+  }
+  @media (max-aspect-ratio:16/9){
+    video{
+        width:auto;
+        height:100%;
+    }
+  }
