@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button'
 import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
+import TextField from '@material-ui/core/TextField'
 import Display from './Display'
 import IconButton from '@material-ui/core/IconButton';
 import axios from 'axios'
@@ -69,11 +70,19 @@ export default function Search() {
   return (
     <React.Fragment>
       <Paper component="form" className={classes.root}>
-        <InputBase autoComplete
-        onChange={handleChange}
-          className={classes.input}
-          placeholder="Search For Movies"
-        />
+          <Autocomplete
+            id="combo-box-demo"
+            options={top100Films}
+            getOptionLabel={option => option.title}
+            style={{ width: 300 }}
+            renderInput={params => (
+              <InputBase {...params}
+              onChange={handleChange} label="Combo box" 
+                className={classes.input} fullWidth
+                placeholder="Search For Movies"
+              />
+            )}
+          />        
         <IconButton type="submit" className={classes.iconButton} aria-label="search">
           <SearchIcon />
         </IconButton>
@@ -91,3 +100,4 @@ export default function Search() {
     </React.Fragment>
   );
 }
+const top100Films = []

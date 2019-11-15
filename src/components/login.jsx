@@ -76,9 +76,6 @@ export default class Login extends React.Component{
             [e.target.name]:e.target.value
         })
     }
-    componentDidUpdate(){
-        console.log(this.state)
-    }
     render(){
         return(
             <>
@@ -94,7 +91,7 @@ export default class Login extends React.Component{
                             </Paper>
                             ):(
                             <Paper className={styles.login_box}>
-                            <Icon style={{fontSize:"50px",color:"rgba(223, 249, 251,1.0)"}} className="fas fa-film"></Icon>
+                            <Icon style={{fontSize:"50px",color:"rgba(52, 73, 94,1.0)"}} className="fas fa-film"></Icon>
                             <Typography className={styles.logo_name}>Movie-O-pedia</Typography>
                             <br/> <br/>
                             <TextField
@@ -146,14 +143,14 @@ export default class Login extends React.Component{
                             <br/> <br/> <br/>
                             <div onClick={this.props.indicate}><Button onClick={this.handleSigning} className={styles.btn} variant="contained" color="primary">SignUp</Button></div>
                             <br/> <br/>
-                            <Link><Typography onClick={this.checkLogin} variant="subtitle1">login ,if you are already an user</Typography></Link>
+                            <Link><Typography onClick={this.handleLogin} variant="subtitle1">login ,if you are already an user</Typography></Link>
                             </Paper>
                             )}
                     </React.Fragment>
                     
                 ):(
                     <Paper className={styles.login_box}>
-                    <Icon style={{fontSize:"50px",color:"rgba(223, 249, 251,1.0)"}} className="fas fa-film"></Icon>
+                    <Icon style={{fontSize:"50px",color:"rgba(52, 73, 94,1.0)"}} className="fas fa-film"></Icon>
                     <Typography className={styles.logo_name}>Movie-O-pedia</Typography>
                     <br/> <br/>
                     {this.state.error_show?(

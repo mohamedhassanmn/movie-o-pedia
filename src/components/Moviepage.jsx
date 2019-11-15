@@ -30,7 +30,7 @@ export default class Moviepage extends React.Component{
     render(){
         console.log("hey bhai")
         return(
-            <div style={{marginTop:"5%",width:"100vw",height:"100vh",backgroundColor:"black"}}>
+            <div style={{marginTop:"3%",width:"100vw",height:"100vh",backgroundColor:"black"}}>
             <br/> <br/> <br/><br/>
                 {this.state.data!=""?(
                     <div className={styles.dataContainer}>
