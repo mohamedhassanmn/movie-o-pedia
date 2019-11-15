@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -17,11 +17,17 @@ import Icon from '@material-ui/core/Icon';
 import Search from './Search'
 import styles from './login.module.css'
 import Userinfo from './User_info'
+import axios from 'axios';
+import Moviepage from './Moviepage';
+import {Route} from 'react-router-dom'
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
+  },
+  welcomeNote:{
+    fontFamily: 'Alatsi, sans-serif',
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
@@ -53,8 +59,8 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function ClippedDrawer() {
-  const classes = useStyles();
+export default function ClippedDrawer(props) {
+  const classes = useStyles(); 
 
   return (
     <div className={classes.root}>
@@ -70,41 +76,47 @@ export default function ClippedDrawer() {
         </div>
         </Toolbar>
       </AppBar>
-      <Drawer
-        className={classes.drawer}
-        variant="permanent"
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-      >
-        <div className={classes.toolbar} />
-        <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
-      <main className={classes.content}>
-        <div className={classes.toolbar} />
-        {localStorage.getItem("username")!=null?(
-        <Typography variant="h4">
-            welcome! {localStorage.getItem("username")}
-        </Typography>):null}
-        <br/> <br/>
-        <Search/>
-      </main>
+      {localStorage.getItem("zoom")?(
+        <Route path="/home/:Id" render={(props)=><Moviepage {...props}/>} />
+      ):(
+        <>
+          <Drawer
+            className={classes.drawer}
+            variant="permanent"
+            classes={{
+              paper: classes.drawerPaper,
+            }}
+          >
+            <div className={classes.toolbar} />
+            <List>
+              {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+                <ListItem button key={text}>
+                  <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItem>
+              ))}
+            </List>
+            <Divider />
+            <List>
+              {['All mail', 'Trash', 'Spam'].map((text, index) => (
+                <ListItem button key={text}>
+                  <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItem>
+              ))}
+            </List>
+          </Drawer>
+          <main className={classes.content}>
+            <div className={classes.toolbar} />
+            {localStorage.getItem("username")!=null?(
+            <Typography  variant="h4">
+                Welcome! <span className={classes.welcomeNote}>{localStorage.getItem("username")}</span>
+            </Typography>):null}
+            <br/> <br/>
+            <Search/>
+          </main>
+        </>
+      )}
     </div>
   );
 }

@@ -17,7 +17,7 @@ import Moviepage from './Moviepage';
 
 const useStyles = makeStyles(theme => ({
   card: {
-    maxWidth: 345,
+    width: 345,
     marginRight:30,
     marginBottom:30,
     cursor:"pointer"
@@ -25,16 +25,16 @@ const useStyles = makeStyles(theme => ({
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
+    backgroundSize:"cover !important"
   },
-  expand: {
-    transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
+  content:{
+    backgroundColor:"rgba(52, 73, 94,0.6) !important",
+
   },
-  expandOpen: {
-    transform: 'rotate(180deg)',
+  text:{
+    fontFamily: 'Arvo, serif',
+    fontSize:"20px !important",
+    color:"rgba(236, 240, 241,1.0)",
   },
   avatar: {
     backgroundColor: red[500],
@@ -52,6 +52,9 @@ export default function Display(props) {
   const handleClick=(e)=>{
     console.log(e.target.id)
   }
+  const handleZoom=(e)=>{
+    localStorage.setItem("zoom",true)
+  }
   return (
       <React.Fragment>
         {props.data!=undefined?(
@@ -60,34 +63,22 @@ export default function Display(props) {
                     return(
                       <div key={i}>
                       <Link to={`/home/${e.Title}/`}>
-                        <Card className={classes.card} key={i} >
-                            <CardHeader
-                                action={
-                                <IconButton aria-label="settings">
-                                    <MoreVertIcon />
-                                </IconButton>
-                                }
-                                title={e.Title}
-                                subheader={e.Year}
-                            />
+                        <Card id="hello" onClick={handleZoom} className={classes.card} key={i} >
                             <CardMedia
                                 className={classes.media}
                                 image={e.Poster}
                                 title="Paella dish"
                             />
-                            <CardContent>
-                                <Typography variant="body2" color="textSecondary" component="p">
-                                This impressive paella is a perfect party dish and a fun meal to cook together with your
-                                guests. Add 1 cup of frozen peas along with the mussels, if you like.
+                            <CardContent className={classes.content}>
+                                <Typography className={classes.text} variant="h5" color="textSecondary" component="p">
+                                  {e.Title}
                                 </Typography>
                             </CardContent>
                             <CardActions disableSpacing>
                                 <IconButton aria-label="add to favorites">
-                                <Typography variant="body2">{e.Type}</Typography>
+                                <Typography variant="subtitle1">{e.Type}</Typography>
                                 </IconButton>
-                                <IconButton aria-label="share">
-                                <ShareIcon />
-                                </IconButton>
+                                <Typography variant="subtitle1">{e.Year}</Typography>
                             </CardActions>
                         </Card>
                       </Link>

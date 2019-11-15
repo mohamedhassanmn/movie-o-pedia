@@ -32,6 +32,7 @@ export default class App extends React.Component{
         this.setState({entry:true})
     }
     render(){
+        // localStorage.removeItem("zoom")
         return(
             <>
                 <Route path="/"exact render={()=><Login 
@@ -40,11 +41,10 @@ export default class App extends React.Component{
                                                 />} 
                 />  
                 {localStorage.getItem("username")?(
-                    <Route exact path="/home" render={()=><Home/>} /> 
+                    <Route path="/home" render={(props)=><Home {...props}/>} /> 
                     ):(
                     <Redirect to="/" />
-                )} 
-                <Route exact path="/home/:Id" component={Moviepage}/>        
+                )}       
             </>
         )
     }

@@ -22,7 +22,7 @@ export default function SimpleMenu() {
 
   return (
     <div>
-     {localStorage.getItem("username")!=null? <Avatar aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+     {localStorage.getItem("username")!=null? <Avatar style={{backgroundColor:"rgba(243, 156, 18,1.0)",cursor:"pointer"}} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
         {localStorage.getItem("username")[0].toUpperCase()}
       </Avatar>:null}
       <Menu

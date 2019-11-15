@@ -8,7 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import axios from 'axios'
 import SearchIcon from '@material-ui/icons/Search';
 import Grid from '@material-ui/core/Grid'
-
+import Autocomplete from '@material-ui/lab/Autocomplete';
 const useStyles = makeStyles(theme => ({
   root: {
     padding: '2px 4px',
@@ -69,7 +69,7 @@ export default function Search() {
   return (
     <React.Fragment>
       <Paper component="form" className={classes.root}>
-        <InputBase
+        <InputBase autoComplete
         onChange={handleChange}
           className={classes.input}
           placeholder="Search For Movies"
