@@ -55,13 +55,17 @@ export default class Login extends React.Component{
         })
     }
     checkLogin=()=>{
-        console.log(this.props.useremail==this.state.user_login,this.props.userpassword,this.state.user_password,"s")
-        if(this.state.user_login==this.props.useremail && this.state.user_password==this.props.userpassword){
-            localStorage.setItem("username",this.props.username)
-            this.setState({
-                make_entry:true
-            })
-        }else{
+        let flag=true
+        this.props.userdata.forEach((e)=>{
+            if(this.state.user_login==e.email){
+                localStorage.setItem("username",e.name)
+                this.setState({
+                    make_entry:true
+                })
+                flag=false
+            }
+        })
+        if(flag){
             this.setState({
                 error_show:true
             })

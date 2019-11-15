@@ -7,20 +7,20 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
+import {Link,Route} from 'react-router-dom'
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Moviepage from './Moviepage';
 
 const useStyles = makeStyles(theme => ({
   card: {
     maxWidth: 345,
     marginRight:30,
-    marginBottom:30
+    marginBottom:30,
+    cursor:"pointer"
   },
   media: {
     height: 0,
@@ -49,14 +49,18 @@ export default function Display(props) {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-  
+  const handleClick=(e)=>{
+    console.log(e.target.id)
+  }
   return (
       <React.Fragment>
         {props.data!=undefined?(
             <React.Fragment>
                 {props.data.map((e,i)=>{
                     return(
-                        <Card className={classes.card} key={i}>
+                      <div key={i}>
+                      <Link to={`/home/${e.Title}/`}>
+                        <Card className={classes.card} key={i} >
                             <CardHeader
                                 action={
                                 <IconButton aria-label="settings">
@@ -86,6 +90,8 @@ export default function Display(props) {
                                 </IconButton>
                             </CardActions>
                         </Card>
+                      </Link>
+                      </div>
                     )})}
         </React.Fragment>):<Typography>no results found</Typography>}
     </React.Fragment>

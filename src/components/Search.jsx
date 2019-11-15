@@ -32,8 +32,10 @@ const useStyles = makeStyles(theme => ({
 export default function Search() {
   const classes = useStyles();
   const [data,setData]=React.useState("")
-  const handleAxios=(search)=>{
-    axios({method:"get",url:`http://www.omdbapi.com/?apikey=215e4f09&s=${search}&page=1`})
+  const [page,setPage]=React.useState("")
+  const [search,setSearch]=React.useState("")
+  const handleAxios=(search,page,title)=>{
+    axios({method:"get",url:`http://www.omdbapi.com/?apikey=215e4f09&s=${search}&page=${page}`})
     .then(res=>{
       console.log(res)
       setData(res.data.Search)      
@@ -41,7 +43,10 @@ export default function Search() {
     .catch(err=>alert(err))
     }
   const handleChange=(e)=>{
-    handleAxios(e.target.value)
+    if(e.target.change!==""){
+      handleAxios(e.target.value)
+      setSearch(e.target.value)
+    }
   }
   React.useEffect(()=>{
       console.log("executed")
@@ -49,8 +54,18 @@ export default function Search() {
         handleAxios("Harry Potter")
       }
   })
-  console.log(data,"here")
-
+  const handlePrevious=()=>{
+    let pre=Number(page)-1
+    setPage(pre)
+    console.log(pre)
+    handleAxios(search,pre)
+  }
+  const handleNext=()=>{
+    let nxt=Number(page)+1
+    setPage(nxt)
+    console.log(nxt)
+    handleAxios(search,nxt)
+  }
   return (
     <React.Fragment>
       <Paper component="form" className={classes.root}>
@@ -68,9 +83,11 @@ export default function Search() {
         {data!==""?(<Display data={data}/>):(null)}
       </Grid>
       <br/> <br/>
-      <Button color="primary" variant="contained">Previous</Button>
-      &nbsp; &nbsp; &nbsp;
-      <Button color="secondary" variant="contained">Next</Button>
+      <Grid container justify="center">
+        <Button onClick={handlePrevious} color="primary" variant="contained">Prev</Button>
+        &nbsp; &nbsp; &nbsp;
+        <Button onClick={handleNext} color="secondary" variant="contained">Next</Button>
+      </Grid>
     </React.Fragment>
   );
 }

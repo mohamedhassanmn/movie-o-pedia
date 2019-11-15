@@ -3,6 +3,7 @@ import Login from './components/login'
 import {Route,Redirect} from 'react-router-dom'
 import Home from './components/Home'
 import axios from 'axios'
+import Moviepage from "./components/Moviepage"
 export default class App extends React.Component{
     constructor(props){
         super(props)
@@ -17,13 +18,11 @@ export default class App extends React.Component{
         this.handleAxios()
     }
     handleAxios=()=>{
-        axios({method:"get",url:"http://my-json-server.typicode.com/mohamedhassanmn/login_data/user/1"})
+        axios({method:"get",url:"https://jsonplaceholder.typicode.com/users"})
         .then(res=>{
             console.log(res)
             this.setState({
-                user_data:res.data.email,
-                user_password:res.data.password,
-                user_name:res.data.name 
+                user_data:res.data
             })
         })
         .catch(err=>alert(err))
@@ -36,17 +35,16 @@ export default class App extends React.Component{
         return(
             <>
                 <Route path="/"exact render={()=><Login 
-                                                    useremail={this.state.user_data} 
-                                                    userpassword={this.state.user_password} 
-                                                    username={this.state.user_name}
+                                                    userdata={this.state.user_data} 
                                                     indicate={this.handleEntry}
                                                 />} 
                 />  
                 {localStorage.getItem("username")?(
-                    <Route path="/home" render={()=><Home/>} /> 
+                    <Route exact path="/home" render={()=><Home/>} /> 
                     ):(
                     <Redirect to="/" />
-                )}         
+                )} 
+                <Route exact path="/home/:Id" component={Moviepage}/>        
             </>
         )
     }
