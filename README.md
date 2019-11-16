@@ -14,7 +14,7 @@
 
 * You can now type in, the name of movies,series and episode in search bar, in turn it will show up the output for typed string.
 * You can click on the appeared result to see the complete details as in the image below. 
-[![Screenshot-from-2019-11-16-23-51-48.png](https://i.postimg.cc/gjxt2LhM/Screenshot-from-2019-11-16-23-51-48.png)](https://postimg.cc/LgM3yXNf)
+[![Screenshot-from-2019-11-16-23-53-06.png](https://i.postimg.cc/pLs0zBB0/Screenshot-from-2019-11-16-23-53-06.png)](https://postimg.cc/QFWkr1w5)
 ### Instruction to run locally
 Using following commands try to run Movie-O-Pedia locally
 
