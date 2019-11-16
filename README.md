@@ -1,4 +1,8 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Movie-o-pedia
+
+#### Resulting image looks like this:
+
+[![Screenshot-from-2019-11-16-22-00-11.png](https://i.postimg.cc/X73KRp3b/Screenshot-from-2019-11-16-22-00-11.png)](https://postimg.cc/s16ZSfv6)
 
 ## Available Scripts
 
