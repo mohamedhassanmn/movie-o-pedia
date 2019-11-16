@@ -16,7 +16,7 @@ export default class Moviepage extends React.Component{
         let str=this.props.match.url.split("/")
         str.pop()
         str=str[str.length-1]
-        axios({method:"get",url:`http://www.omdbapi.com/?apikey=215e4f09&t=${str}`})
+        axios({method:"get",url:`https://www.omdbapi.com/?apikey=215e4f09&t=${str}`})
         .then(res=>{
             // console.log(res)
             this.setState({

@@ -37,7 +37,7 @@ export default function Search(props) {
   const [page,setPage]=React.useState(1)
   const [search,setSearch]=React.useState("harry potter")
   const handleAxios=(search,page)=>{
-    axios({method:"get",url:`http://www.omdbapi.com/?apikey=215e4f09&s=${search}&page=${page}`})
+    axios({method:"get",url:`https://www.omdbapi.com/?apikey=215e4f09&s=${search}&page=${page}`})
     .then(res=>{
       // console.log(res)
         setData(res.data.Search)
