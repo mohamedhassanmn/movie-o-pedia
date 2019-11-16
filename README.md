@@ -14,3 +14,14 @@
 
 * You can now type in, the name of movies,series and episode in search bar, in turn it will show up the output for typed string.
 * You can click on the appeared result to see the complete details as in the image below. 
+
+### Instruction to run locally
+Using following commands try to run Movie-O-Pedia locally
+
+`git clone https://github.com/mohamedhassanmn/react-timer-stopwatch`
+
+`cd react-timer-stopwatch`
+
+`npm install`
+
+`npm start`
