@@ -3,7 +3,6 @@ import Login from './components/login'
 import {Route,Redirect} from 'react-router-dom'
 import Home from './components/Home'
 import axios from 'axios'
-import Moviepage from "./components/Moviepage"
 export default class App extends React.Component{
     constructor(props){
         super(props)

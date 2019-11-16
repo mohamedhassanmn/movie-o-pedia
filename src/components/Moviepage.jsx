@@ -1,7 +1,6 @@
 import React from 'react'
 import axios from 'axios'
 import styles from './moviepage.module.css'
-import { Typography } from '@material-ui/core'
 import DetailShow from './Detailshow'
 export default class Moviepage extends React.Component{
     constructor(props){

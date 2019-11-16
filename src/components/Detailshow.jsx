@@ -61,7 +61,7 @@ export default function RecipeReviewCard(props) {
       <CardHeader
         action={
             <>
-            <Typography component="legend">imdbRating</Typography>
+            <Typography component="legend">IMDbRating</Typography>
             <Rating name="read-only" value={props.data.imdbRating} max={10} readOnly />
             {props.data.Ratings.map((e)=>{
                 return(

@@ -1,19 +1,14 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
-import {Link,Route} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
-import ShareIcon from '@material-ui/icons/Share';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import Moviepage from './Moviepage';
+import Icon from '@material-ui/core/Icon'
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -52,6 +47,9 @@ export default function Display(props) {
   const handleClick=(e)=>{
     console.log(e.target.id)
   }
+  const handleLike=(e)=>{
+    e.target.style.backgroundColor="yellow"
+  }
   const handleZoom=(e)=>{
     localStorage.setItem("zoom",true)
   }
@@ -62,26 +60,31 @@ export default function Display(props) {
                 {props.data.map((e,i)=>{
                     return(
                       <div key={i}>
-                      <Link to={`/home/${e.Title}/`}>
-                        <Card id="hello" onClick={handleZoom} className={classes.card} key={i} >
-                            <CardMedia
-                                className={classes.media}
-                                image={e.Poster}
-                                title="Paella dish"
-                            />
-                            <CardContent className={classes.content}>
-                                <Typography className={classes.text} variant="h5" color="textSecondary" component="p">
-                                  {e.Title}
-                                </Typography>
-                            </CardContent>
-                            <CardActions disableSpacing>
-                                <IconButton aria-label="add to favorites">
-                                <Typography variant="subtitle1">{e.Type}</Typography>
-                                </IconButton>
-                                <Typography variant="subtitle1">{e.Year}</Typography>
-                            </CardActions>
+                        <Card id="hello" className={classes.card} key={i} >
+                          <Link to={`/home/${e.Title}/`}>
+                            <div onClick={handleZoom}>
+                              <CardMedia
+                                  className={classes.media}
+                                  image={e.Poster}
+                                  title="Paella dish"
+                              />
+                              <CardContent className={classes.content}>
+                                  <Typography className={classes.text} variant="h5" color="textSecondary" component="p">
+                                    {e.Title}
+                                  </Typography>
+                              </CardContent>
+                            </div>
+                          </Link>
+                          <CardActions>
+                              <IconButton aria-label="add to favorites">
+                              <Typography variant="subtitle1">{e.Type}</Typography>
+                              </IconButton>
+                              <Typography variant="subtitle1">{e.Year}</Typography>
+                              <IconButton onClick={handleLike} aria-label="add to favorites">
+                                <Icon className="far fa-smile-beam"></Icon>
+                              </IconButton>
+                          </CardActions>
                         </Card>
-                      </Link>
                       </div>
                     )})}
         </React.Fragment>):<Typography>no results found</Typography>}
