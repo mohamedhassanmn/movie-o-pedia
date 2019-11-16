@@ -5,7 +5,7 @@
 [![Screenshot-from-2019-11-16-22-00-11.png](https://i.postimg.cc/X73KRp3b/Screenshot-from-2019-11-16-22-00-11.png)](https://postimg.cc/s16ZSfv6)
 
 ### Features
-![](gs://fir-bbaa1.appspot.com/images/captured.gif)
+[![captured.gif](gs://fir-bbaa1.appspot.com/images/captured.gif)]
 * Able to login with the name of 10 users in this api: https://jsonplaceholder.typicode.com/
 * Able to sign up as new user,it wont get added as user in real-time but enables the entry for new users.
 * Show an invalid message if non-user tries to login as in the image below.
