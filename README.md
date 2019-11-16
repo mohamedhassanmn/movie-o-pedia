@@ -1,6 +1,6 @@
 # Movie-o-pedia
 
-#### Resulting image looks like this:
+#### Resulting project looks like this:
 
 [![Screenshot-from-2019-11-16-22-00-11.png](https://i.postimg.cc/X73KRp3b/Screenshot-from-2019-11-16-22-00-11.png)](https://postimg.cc/s16ZSfv6)
 
