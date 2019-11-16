@@ -4,7 +4,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Avatar from '@material-ui/core/Avatar'
 
-export default function SimpleMenu() {
+export default function UserInfo() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [logout,setLogout]=React.useState(false)
 
@@ -17,6 +17,7 @@ export default function SimpleMenu() {
   };
 
   const handleClose = () => {
+    localStorage.removeItem("zoom")
     setAnchorEl(null);
   };
 

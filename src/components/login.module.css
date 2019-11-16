@@ -27,7 +27,7 @@
   .logo_name_menu{
     font-family: 'Pacifico', cursive !important;
     font-size:20px !important;
-    color:#dff9fb !important;
+    color:rgba(52, 73, 94,1.0) !important;
     padding-left:30px;
   }
   .error{
@@ -35,6 +35,11 @@
       justify-content: center;
       align-content: center;
       background-color: rgba(255,255,255,0.5) !important;
+  }
+  .back_to_login{
+    text-decoration: underline;
+    color:darkblue;
+    cursor:pointer;
   }
   @media (max-width:1340px){
         .login_box{

@@ -19,7 +19,7 @@ export default class App extends React.Component{
     handleAxios=()=>{
         axios({method:"get",url:"https://jsonplaceholder.typicode.com/users"})
         .then(res=>{
-            console.log(res)
+            // console.log(res)
             this.setState({
                 user_data:res.data
             })
@@ -27,11 +27,9 @@ export default class App extends React.Component{
         .catch(err=>alert(err))
     }
     handleEntry=()=>{
-        console.log('dont remove')
         this.setState({entry:true})
     }
     render(){
-        // localStorage.removeItem("zoom")
         return(
             <>
                 <Route path="/"exact render={()=><Login 
@@ -40,7 +38,7 @@ export default class App extends React.Component{
                                                 />} 
                 />  
                 {localStorage.getItem("username")?(
-                    <Route path="/home" render={(props)=><Home {...props}/>} /> 
+                    <Route path="/home" render={()=><Home/>} /> 
                     ):(
                     <Redirect to="/" />
                 )}       

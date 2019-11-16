@@ -8,7 +8,6 @@ import {Link} from 'react-router-dom'
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
-import Icon from '@material-ui/core/Icon'
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -38,56 +37,48 @@ const useStyles = makeStyles(theme => ({
 
 export default function Display(props) {
   const classes = useStyles();
-  console.log(props.data)
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
-  const handleClick=(e)=>{
-    console.log(e.target.id)
-  }
-  const handleLike=(e)=>{
-    e.target.style.backgroundColor="yellow"
-  }
+  // console.log(props.data)
   const handleZoom=(e)=>{
     localStorage.setItem("zoom",true)
   }
   return (
       <React.Fragment>
-        {props.data!=undefined?(
-            <React.Fragment>
-                {props.data.map((e,i)=>{
-                    return(
-                      <div key={i}>
-                        <Card id="hello" className={classes.card} key={i} >
-                          <Link to={`/home/${e.Title}/`}>
-                            <div onClick={handleZoom}>
-                              <CardMedia
-                                  className={classes.media}
-                                  image={e.Poster}
-                                  title="Paella dish"
-                              />
-                              <CardContent className={classes.content}>
-                                  <Typography className={classes.text} variant="h5" color="textSecondary" component="p">
-                                    {e.Title}
-                                  </Typography>
-                              </CardContent>
-                            </div>
-                          </Link>
-                          <CardActions>
-                              <IconButton aria-label="add to favorites">
-                              <Typography variant="subtitle1">{e.Type}</Typography>
-                              </IconButton>
-                              <Typography variant="subtitle1">{e.Year}</Typography>
-                              <IconButton onClick={handleLike} aria-label="add to favorites">
-                                <Icon className="far fa-smile-beam"></Icon>
-                              </IconButton>
-                          </CardActions>
-                        </Card>
-                      </div>
-                    )})}
-        </React.Fragment>):<Typography>no results found</Typography>}
+        {props.data!==undefined?(
+          <>
+            {props.data.map((e,i)=>{
+                return(
+                  <div key={i}>
+                    <Card id="hello" className={classes.card} key={i} >
+                      <Link to={`/home/${e.Title}/`}>
+                        <div onClick={handleZoom}>
+                          <CardMedia
+                              className={classes.media}
+                              image={e.Poster}
+                              title="Paella dish"
+                          />
+                          <CardContent className={classes.content}>
+                              <Typography className={classes.text} variant="h5" color="textSecondary" component="p">
+                                {e.Title}
+                              </Typography>
+                          </CardContent>
+                        </div>
+                      </Link>
+                      <CardActions>
+                          <IconButton aria-label="add to favorites">
+                          <Typography variant="subtitle1">{e.Type}</Typography>
+                          </IconButton>
+                          <Typography variant="subtitle1">{e.Year}</Typography>
+                      </CardActions>
+                    </Card>
+                  </div>
+                )
+              }
+            )
+          }
+        </>
+        ):(
+          <Typography>no results found</Typography>
+        )}
     </React.Fragment>
   );
 }

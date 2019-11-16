@@ -6,7 +6,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import Button from '@material-ui/core/Button'
 import Icon from '@material-ui/core/Icon';
 import Typography from '@material-ui/core/Typography';
-import {Link,Redirect} from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
 import axios from 'axios';
 import CircularProgress from '@material-ui/core/CircularProgress';
 export default class Login extends React.Component{
@@ -57,7 +57,7 @@ export default class Login extends React.Component{
     checkLogin=()=>{
         let flag=true
         this.props.userdata.forEach((e)=>{
-            if(this.state.user_login==e.email){
+            if(this.state.user_login===e.email){
                 localStorage.setItem("username",e.name)
                 this.setState({
                     make_entry:true
@@ -97,7 +97,6 @@ export default class Login extends React.Component{
                             <TextField
                                 className={styles.login_input}
                                 onChange={this.handleChange}
-                                id="input-with-icon-textfield"
                                 label="Name"
                                 name="new_name"
                                 InputProps={{
@@ -112,7 +111,6 @@ export default class Login extends React.Component{
                             <TextField
                                 className={styles.login_input}
                                 onChange={this.handleChange}
-                                id="input-with-icon-textfield"
                                 label="Email"
                                 type="email"
                                 name="new_email"
@@ -128,7 +126,6 @@ export default class Login extends React.Component{
                             <TextField
                                 className={styles.login_input}
                                 onChange={this.handleChange}
-                                id="input-with-icon-textfield"
                                 label="Password"
                                 type="password"
                                 name="new_password"
@@ -143,7 +140,7 @@ export default class Login extends React.Component{
                             <br/> <br/> <br/>
                             <div onClick={this.props.indicate}><Button onClick={this.handleSigning} className={styles.btn} variant="contained" color="primary">SignUp</Button></div>
                             <br/> <br/>
-                            <Link><Typography onClick={this.handleLogin} variant="subtitle1">login ,if you are already an user</Typography></Link>
+                            <Typography className={styles.back_to_login} onClick={this.handleLogin} variant="subtitle1">login ,if you are already an user</Typography>
                             </Paper>
                             )}
                     </React.Fragment>
@@ -163,7 +160,6 @@ export default class Login extends React.Component{
                     <TextField
                         className={styles.login_input}
                         onChange={this.handleChange}
-                        id="input-with-icon-textfield"
                         label="Email"
                         name="user_login"
                         InputProps={{
@@ -177,7 +173,6 @@ export default class Login extends React.Component{
                     <br/> <br/>
                     <TextField
                         className={styles.login_input}
-                        id="input-with-icon-textfield"
                         onChange={this.handleChange}
                         label="Password"
                         type="password"
@@ -193,7 +188,7 @@ export default class Login extends React.Component{
                     <br/> <br/> <br/>
                     <div onClick={this.props.indicate}><Button onClick={this.checkLogin} className={styles.btn} variant="contained" color="primary">Login</Button></div>
                     <br/> <br/>
-                    <Link><Typography onClick={this.handleSignup} variant="subtitle1">create a new account</Typography></Link>
+                    <Typography className={styles.back_to_login} onClick={this.handleSignup} variant="subtitle1">create a new account</Typography>
                     </Paper>
                 )}
                 {this.state.make_entry?(<Redirect to="/home"/>):(null)}

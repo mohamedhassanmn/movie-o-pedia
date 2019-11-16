@@ -10,7 +10,6 @@ export default class Moviepage extends React.Component{
         }
     }
     componentDidMount(){
-        console.log(this.props)
         this.handleAxios()
     }
     handleAxios=()=>{
@@ -19,7 +18,7 @@ export default class Moviepage extends React.Component{
         str=str[str.length-1]
         axios({method:"get",url:`http://www.omdbapi.com/?apikey=215e4f09&t=${str}`})
         .then(res=>{
-            console.log(res)
+            // console.log(res)
             this.setState({
                 data:res.data
             })
@@ -27,11 +26,10 @@ export default class Moviepage extends React.Component{
         .catch(err=>alert(err))
     }
     render(){
-        console.log("hey bhai")
         return(
             <div style={{marginTop:"3%",width:"100vw",height:"100vh",backgroundColor:"black"}}>
             <br/> <br/> <br/><br/>
-                {this.state.data!=""?(
+                {this.state.data!==""?(
                     <div className={styles.dataContainer}>
                         <DetailShow data={this.state.data} />
                     </div>
