@@ -2,7 +2,7 @@
 
 #### Resulting project looks like this:
 
-[![Screenshot-from-2019-11-16-22-00-11.png](https://i.postimg.cc/X73KRp3b/Screenshot-from-2019-11-16-22-00-11.png)](https://postimg.cc/s16ZSfv6)
+[![Screenshot-from-2019-11-16-22-00-11.png](https://i.postimg.cc/sxP3f2hZ/Screenshot-from-2019-11-16-22-00-11.png)](https://postimg.cc/JHhfPMK1)
 
 ### Features
 ![](captured.gif)
