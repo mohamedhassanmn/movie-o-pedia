@@ -46,7 +46,7 @@ export default function Search(props) {
     .catch(err=>alert(err))
     }
   const handleChange=(e)=>{
-    if(e.target.change!==""){
+    if(e.target.value!==""){
       handleAxios(e.target.value,1)
       setSearch(e.target.value)
       localStorage.setItem("movie",e.target.value)
@@ -62,7 +62,7 @@ export default function Search(props) {
     handleAxios(search,page)
   }
   React.useEffect(()=>{
-      if(localStorage.getItem("movie")!==undefined&&data===""){
+      if(localStorage.getItem("movie")!==null&&data===""){
         setSearch(localStorage.getItem("movie"))
         setPage(localStorage.getItem("page"))
         handleAxios(localStorage.getItem("movie"),localStorage.getItem("page"))
@@ -71,7 +71,7 @@ export default function Search(props) {
       }
   },[data, search, page])
   const handlePrevious=()=>{
-    let pre=Number(page)-1
+    let pre=Number(page)-1  
     setPage(pre)
     handleAxios(search,pre)
   }
