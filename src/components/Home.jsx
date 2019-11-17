@@ -64,8 +64,9 @@ export default function Home() {
   {/* after clicking on the result image */}
 
       {localStorage.getItem("zoom")?(
+        
         <Route  path="/home/:Id" render={(props)=><Moviepage {...props}/>} />
-      ):(
+       ):( 
           <main  className={classes.content}>
             <div className={classes.toolbar} />
             {localStorage.getItem("username")!=null?(
@@ -75,7 +76,7 @@ export default function Home() {
             <br/> <br/>
             <Search/>
           </main>
-          )}
+         )} 
     </div>
   );
 }

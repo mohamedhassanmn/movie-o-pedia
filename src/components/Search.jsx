@@ -36,8 +36,9 @@ export default function Search(props) {
   const [data,setData]=React.useState("")
   const [page,setPage]=React.useState(1)
   const [search,setSearch]=React.useState("harry potter")
-  const handleAxios=(search,page)=>{
-    axios({method:"get",url:`https://www.omdbapi.com/?apikey=215e4f09&s=${search}&page=${page}`})
+  const handleAxios=(find,pages)=>{
+    localStorage.setItem("page",pages)
+    axios({method:"get",url:`https://www.omdbapi.com/?apikey=215e4f09&s=${find}&page=${pages}`})
     .then(res=>{
       // console.log(res)
         setData(res.data.Search)
@@ -45,16 +46,14 @@ export default function Search(props) {
     .catch(err=>alert(err))
     }
   const handleChange=(e)=>{
-    if(e.which==32){
-      handleAxios(search,page)
-    }
     if(e.target.change!==""){
-      handleAxios(e.target.value,page)
+      handleAxios(e.target.value,1)
       setSearch(e.target.value)
+      localStorage.setItem("movie",e.target.value)
     }
   }
   const handleKeyPress=(e)=>{
-    if(e.which==13){
+    if(e.which===13){
       e.preventDefault()
       handleAxios(search,page)
     }
@@ -63,10 +62,14 @@ export default function Search(props) {
     handleAxios(search,page)
   }
   React.useEffect(()=>{
-      if(data===""){
-        handleAxios(search)
+      if(localStorage.getItem("movie")!==undefined&&data===""){
+        setSearch(localStorage.getItem("movie"))
+        setPage(localStorage.getItem("page"))
+        handleAxios(localStorage.getItem("movie"),localStorage.getItem("page"))
+      }else if(data===""){
+        handleAxios(search,page)
       }
-  })
+  },[data, search, page])
   const handlePrevious=()=>{
     let pre=Number(page)-1
     setPage(pre)
