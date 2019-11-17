@@ -45,10 +45,22 @@ export default function Search(props) {
     .catch(err=>alert(err))
     }
   const handleChange=(e)=>{
+    if(e.which==32){
+      handleAxios(search,page)
+    }
     if(e.target.change!==""){
       handleAxios(e.target.value,page)
       setSearch(e.target.value)
     }
+  }
+  const handleKeyPress=(e)=>{
+    if(e.which==13){
+      e.preventDefault()
+      handleAxios(search,page)
+    }
+  }
+  const handleClick=()=>{
+    handleAxios(search,page)
   }
   React.useEffect(()=>{
       if(data===""){
@@ -76,13 +88,13 @@ export default function Search(props) {
               style={{ width: 300 }}
               renderInput={params => (
                 <InputBase {...params}
-                onChange={handleChange} label="Combo box" 
+                onChange={handleChange} onKeyPress={handleKeyPress} label="Combo box" 
                   className={classes.input} fullWidth
                   placeholder="Search For Movies"
                 />
               )}
             />        
-          <IconButton type="submit" className={classes.iconButton} aria-label="search">
+          <IconButton onClick={handleClick} className={classes.iconButton} >
             <SearchIcon />
           </IconButton>
         </Paper>
