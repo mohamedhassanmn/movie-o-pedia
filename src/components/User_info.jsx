@@ -19,6 +19,7 @@ export default function UserInfo() {
   const handleClose = () => {
     localStorage.removeItem("zoom")
     localStorage.removeItem("movie")
+    localStorage.removeItem("page")
     setAnchorEl(null);
   };
 
