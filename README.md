@@ -6,7 +6,7 @@
 
 ### Features
 
-![](captured.gif)
+  ![](captured.gif)
 
 * Able to login with the name of 10 users in this api: https://jsonplaceholder.typicode.com/
 * Able to sign up as new user,it wont get added as user in real-time but enables the entry for new users.
